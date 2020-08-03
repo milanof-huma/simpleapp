@@ -1,0 +1,15 @@
+repositories:
+  - name: stable
+    url: https://kubernetes-charts.storage.googleapis.com
+
+releases:
+  - name: ingress-controller
+    namespace: kube-system
+    chart: stable/nginx-ingress
+    version: "1.40.3"
+
+  - name: sampleapp
+    namespace: sampleapp
+    chart: ./charts/simpleapp
+    values:
+      - image:
