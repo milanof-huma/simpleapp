@@ -10,14 +10,14 @@ releases:
     values:
     - "./charts/simpleapp/values.yaml"
 
-  -  name: loki
-     namespace: monitoring
-     chart: ./charts/loki/loki-stack
-     values:
+  - name: loki
+    namespace: monitoring
+    chart: ./charts/loki/loki-stack
+    values:
      - "./charts/loki/loki-stack/values.yaml"
 
-  -  name: grafana
-     namespace: monitoring
-     chart: ./charts/grafana
-     values:
+  - name: grafana
+    namespace: monitoring
+    chart: ./charts/grafana
+    values:
      - "./charts/grafana/values.yaml"

@@ -227,7 +227,7 @@ initChownData:
   ## If false, data ownership will not be reset at startup
   ## This allows the prometheus-server to be run with an arbitrary user
   ##
-  enabled: true
+  enabled: false
 
   ## initChownData container image
   ##
@@ -340,7 +340,7 @@ notifiers:
       uid: slack
       org_id: 1
       settings:
-        url: https://hooks.slack.com/services/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 # legacy setting since Grafana v7.2 (stored non-encrypted)
+        url: https://hooks.slack.com/services/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 # legacy setting since Grafana v7.2 (stored non-encrypted)
 
     # - name: notification-channel-2
     #   type: slack
@@ -482,7 +482,7 @@ smtp:
 sidecar:
   image:
     repository: kiwigrid/k8s-sidecar
-    tag: 0.1.151
+    tag: 0.1.178
     sha: ""
   imagePullPolicy: IfNotPresent
   resources: {}
@@ -531,7 +531,7 @@ sidecar:
     # It's also possible to specify ALL to search in all namespaces
     searchNamespace: null
   notifiers:
-    enabled: true
+    enabled: false
     # label that the configmaps with notifiers are marked with
     label: grafana_notifier
     # If specified, the sidecar will search for notifier config-maps inside this namespace.
