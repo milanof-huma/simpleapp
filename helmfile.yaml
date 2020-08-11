@@ -16,8 +16,8 @@ releases:
     values:
      - "./charts/loki/loki-stack/values.yaml"
 
-  - name: grafana
-    namespace: monitoring
-    chart: ./charts/grafana
-    values:
-     - "./charts/grafana/values.yaml"
+  # - name: grafana
+  #   namespace: monitoring
+  #   chart: ./charts/grafana
+  #   values:
+  #    - "./charts/grafana/values.yaml"

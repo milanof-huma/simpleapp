@@ -227,7 +227,7 @@ initChownData:
   ## If false, data ownership will not be reset at startup
   ## This allows the prometheus-server to be run with an arbitrary user
   ##
-  enabled: false
+  enabled: true
 
   ## initChownData container image
   ##
@@ -318,54 +318,51 @@ plugins: []
 ## Configure grafana datasources
 ## ref: http://docs.grafana.org/administration/provisioning/#datasources
 ##
-datasources:
- datasources.yaml:
-   apiVersion: 1
-   datasources:
-   - name: Prometheus-1
-     type: prometheus
-     url: http://loki:3100/loki
-     access: proxy
-     isDefault: true
+datasources: {}
+#  datasources.yaml:
+#    apiVersion: 1
+#    datasources:
+#    - name: Prometheus
+#      type: prometheus
+#      url: http://prometheus-prometheus-server
+#      access: proxy
+#      isDefault: true
 
 ## Configure notifiers
 ## ref: http://docs.grafana.org/administration/provisioning/#alert-notification-channels
 ##
-notifiers:
-  notifiers.yaml:
-    apiVersion: 1
-    notifiers:
-    - name: notification-channel-1
-      type: slack
-      uid: slack
-      org_id: 1
-      settings:
-        url: https://hooks.slack.com/services/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 # legacy setting since Grafana v7.2 (stored non-encrypted)
-
-    # - name: notification-channel-2
-    #   type: slack
-    #   uid: slack1
-    #   org_id: 1
-    #   settings:
-    #     url: https://slack.com/dwhjdwhjdhwj #
+notifiers: {}
+#  notifiers.yaml:
+#    notifiers:
+#    - name: email-notifier
+#      type: email
+#      uid: email1
+#      # either:
+#      org_id: 1
+#      # or
+#      org_name: Main Org.
+#      is_default: true
+#      settings:
+#        addresses: an_email_address@example.com
+#    delete_notifiers:
 
 ## Configure grafana dashboard providers
 ## ref: http://docs.grafana.org/administration/provisioning/#dashboards
 ##
 ## `path` must be /var/lib/grafana/dashboards/<provider_name>
 ##
-dashboardProviders:
-  dashboardproviders.yaml:
-   apiVersion: 1
-   providers:
-   - name: 'default'
-     orgId: 1
-     folder: ''
-     type: file
-     disableDeletion: false
-     editable: true
-     options:
-       path: /var/lib/grafana/dashboards/default
+dashboardProviders: {}
+#  dashboardproviders.yaml:
+#    apiVersion: 1
+#    providers:
+#    - name: 'default'
+#      orgId: 1
+#      folder: ''
+#      type: file
+#      disableDeletion: false
+#      editable: true
+#      options:
+#        path: /var/lib/grafana/dashboards/default
 
 ## Configure grafana dashboard to import
 ## NOTE: To use dashboards you must also enable/configure dashboardProviders
@@ -373,26 +370,22 @@ dashboardProviders:
 ##
 ## dashboards per provider, use provider name as key.
 ##
-dashboards:
-  default:
-    # some-dashboard:
-    #   json: |
-    #     $RAW_JSON
-    # custom-dashboard:
-    #   file: dashboards/custom-dashboard.json
-    # Huma:
-    #   gnetId: 12778
-    #   revision: 1
-    #   datasource: Prometheus
-    prometheus-stats:
-      gnetId: 12777
-      revision: 6
-      datasource: Prometheus-1
-    # local-dashboard:
-    #   url: https://example.com/repository/test.json
-    # local-dashboard-base64:
-    #   url: https://example.com/repository/test-b64.json
-    #   b64content: true
+dashboards: {}
+  # default:
+  #   some-dashboard:
+  #     json: |
+  #       $RAW_JSON
+  #   custom-dashboard:
+  #     file: dashboards/custom-dashboard.json
+  #   prometheus-stats:
+  #     gnetId: 2
+  #     revision: 2
+  #     datasource: Prometheus
+  #   local-dashboard:
+  #     url: https://example.com/repository/test.json
+  #   local-dashboard-base64:
+  #     url: https://example.com/repository/test-b64.json
+  #     b64content: true
 
 ## Reference to external ConfigMap per provider. Use provider name as key and ConfiMap name as value.
 ## A provider dashboards must be defined either by external ConfigMaps or in values.yaml, not in both.
@@ -482,7 +475,7 @@ smtp:
 sidecar:
   image:
     repository: kiwigrid/k8s-sidecar
-    tag: 0.1.178
+    tag: 0.1.151
     sha: ""
   imagePullPolicy: IfNotPresent
   resources: {}

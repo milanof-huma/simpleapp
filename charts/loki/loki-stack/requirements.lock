@@ -1,0 +1,15 @@
+dependencies:
+- name: loki
+  repository: file://../loki
+  version: 0.30.2
+- name: promtail
+  repository: file://../promtail
+  version: 0.23.4
+- name: fluent-bit
+  repository: file://../fluent-bit
+  version: 0.1.5
+- name: grafana
+  repository: file://../grafana
+  version: 5.5.5
+digest: sha256:d012cfcea519e33f238af435396ab70737765e04c7b852167a960baab2934034
+generated: "2020-08-12T00:47:00.945451093+05:30"

@@ -5,6 +5,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+charts/loki/loki-stack/charts/
+
 # C extensions
 *.so
 
