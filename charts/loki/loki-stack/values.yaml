@@ -1,11 +1,17 @@
 loki:
   enabled: true
+  persistence:
+    enabled: true
+    accessModes:
+    - ReadWriteOnce
+    size: 20Gi
+    annotations: {}
 
 promtail:
   enabled: true
 
 fluent-bit:
-  enabled: false
+  enabled: true
 
 grafana:
   enabled: true
