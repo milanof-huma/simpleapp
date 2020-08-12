@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: index.docker.io/humaoss/simpleapp
+  repository: docker.io/humaoss/simpleapp
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: v0.0.1
 
 imagePullSecrets: []
 nameOverride: ""
@@ -35,10 +35,15 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
+deployment:
+  name: simpleapp-deploy
+  label: simpleapp-dev
 
 service:
-  type: ClusterIP
-  port: 5000
+  type: LoadBalancer
+  port: 80
+  targetPort: 5000
+  name: simpleapp-service
 
 ingress:
   enabled: false
