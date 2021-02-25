@@ -1,1 +1,39 @@
-# simpleapp
+# This is a simple web app on flask/python:3.8 as a helmfile example
+
+## Generate charts:
+
+    $ helmfile repos
+    Adding repo stable https://charts.helm.sh/stable
+    "stable" has been added to your repositories
+
+**A lot of YAML files should be in ouitput like:**
+
+    $ helmfile template --skip-deps
+    Templating release=ingress-controller, chart=stable/nginx-ingress
+    ---
+    apiVersion: v1
+    kind: Pod
+    metadata:
+    name: "simpleapp-test-connection"
+    labels:
+        helm.sh/chart: simpleapp-0.1.0
+        app.kubernetes.io/name: simpleapp
+        app.kubernetes.io/instance: simpleapp
+        app.kubernetes.io/version: "1.16.0"
+        app.kubernetes.io/managed-by: Helm
+    annotations:
+        "helm.sh/hook": test-success
+    spec:
+    containers:
+        - name: wget
+        image: busybox
+        command: ['wget']
+        args: ['simpleapp:5000']
+    restartPolicy: Never
+
+## Checked versions:
+
+- helmfile version v0.138.4
+
+        $ helm version 
+        version.BuildInfo{Version:"v3.5.2", GitCommit:"167aac70832d3a384f65f9745335e9fb40169dc2", GitTreeState:"dirty", GoVersion:"go1.15.7"}
